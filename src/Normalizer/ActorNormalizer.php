@@ -74,18 +74,18 @@ final class ActorNormalizer extends Normalizer
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        $iri = $this->denormalizeInverseFunctionalIdentifier($data, $format, $context);
+        $inverseFunctionalIdentifier = $this->denormalizeInverseFunctionalIdentifier($data, $format, $context);
         $name = isset($data['name']) ? $data['name'] : null;
 
         if (isset($data['objectType']) && 'Group' === $data['objectType']) {
-            return $this->denormalizeGroup($iri, $name, $data, $format, $context);
+            return $this->denormalizeGroup($inverseFunctionalIdentifier, $name, $data, $format, $context);
         }
 
-        if (null === $iri) {
-            throw new InvalidArgumentException('Missing IRI for agent.');
+        if (null === $inverseFunctionalIdentifier) {
+            throw new InvalidArgumentException('Missing inverse functional identifier for agent.');
         }
 
-        return new Agent($iri, $name);
+        return new Agent($inverseFunctionalIdentifier, $name);
     }
 
     /**
