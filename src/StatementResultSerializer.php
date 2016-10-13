@@ -43,12 +43,15 @@ final class StatementResultSerializer implements StatementResultSerializerInterf
     /**
      * {@inheritDoc}
      */
-    public function deserializeStatementResult($data)
+    public function deserializeStatementResult($data, array $attachments = array())
     {
         return $this->serializer->deserialize(
             $data,
             'Xabbuh\XApi\Model\StatementResult',
-            'json'
+            'json',
+            array(
+                'xapi_attachments' => $attachments,
+            )
         );
     }
 }

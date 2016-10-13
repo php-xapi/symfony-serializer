@@ -51,24 +51,30 @@ final class StatementSerializer implements StatementSerializerInterface
     /**
      * {@inheritDoc}
      */
-    public function deserializeStatement($data)
+    public function deserializeStatement($data, array $attachments = array())
     {
         return $this->serializer->deserialize(
             $data,
             'Xabbuh\XApi\Model\Statement',
-            'json'
+            'json',
+            array(
+                'xapi_attachments' => $attachments,
+            )
         );
     }
 
     /**
      * {@inheritDoc}
      */
-    public function deserializeStatements($data)
+    public function deserializeStatements($data, array $attachments = array())
     {
         return $this->serializer->deserialize(
             $data,
             'Xabbuh\XApi\Model\Statement[]',
-            'json'
+            'json',
+            array(
+                'xapi_attachments' => $attachments,
+            )
         );
     }
 }

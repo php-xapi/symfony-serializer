@@ -58,7 +58,7 @@ final class StatementResultNormalizer extends Normalizer
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
-        $statements = $this->denormalizeData($data['statements'], 'Xabbuh\XApi\Model\Statement[]');
+        $statements = $this->denormalizeData($data['statements'], 'Xabbuh\XApi\Model\Statement[]', $format, $context);
         $moreUrlPath = null;
 
         if (isset($data['more'])) {

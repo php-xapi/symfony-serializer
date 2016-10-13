@@ -63,6 +63,7 @@ final class AttachmentNormalizer extends Normalizer
         $display = $this->denormalizeData($data['display'], 'Xabbuh\XApi\Model\LanguageMap', $format, $context);
         $description = null;
         $fileUrl = null;
+        $content = null;
 
         if (isset($data['description'])) {
             $description = $this->denormalizeData($data['description'], 'Xabbuh\XApi\Model\LanguageMap', $format, $context);
@@ -72,7 +73,11 @@ final class AttachmentNormalizer extends Normalizer
             $fileUrl = IRL::fromString($data['fileUrl']);
         }
 
-        return new Attachment(IRI::fromString($data['usageType']), $data['contentType'], $data['length'], $data['sha2'], $display, $description, $fileUrl);
+        if (isset($context['xapi_attachments'][$data['sha2']])) {
+            $content = $context['xapi_attachments'][$data['sha2']]['content'];
+        }
+
+        return new Attachment(IRI::fromString($data['usageType']), $data['contentType'], $data['length'], $data['sha2'], $display, $description, $fileUrl, $content);
     }
 
     public function supportsDenormalization($data, $type, $format = null)

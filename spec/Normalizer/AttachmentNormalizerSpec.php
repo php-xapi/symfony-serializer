@@ -21,7 +21,10 @@ class AttachmentNormalizerSpec extends ObjectBehavior
             'text/plain',
             18,
             'bd1a58265d96a3d1981710dab8b1e1ed04a8d7557ea53ab0cf7b44c04fd01545',
-            LanguageMap::create(array('en-US' => 'Text attachment'))
+            LanguageMap::create(array('en-US' => 'Text attachment')),
+            null,
+            null,
+            'some text content'
         );
 
         $this->supportsNormalization($attachment)->shouldReturn(true);

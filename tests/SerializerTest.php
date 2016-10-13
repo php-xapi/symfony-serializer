@@ -134,15 +134,40 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
 
     public function serializeAttachmentData()
     {
-        return $this->buildSerializeTestCases('Attachment');
+        $tests = array();
+
+        foreach (get_class_methods('Xabbuh\XApi\DataFixtures\AttachmentFixtures') as $method) {
+            if (false !== strpos($method, 'ForQuery')) {
+                continue;
+            }
+
+            $jsonFixture = json_decode(call_user_func(array('XApi\Fixtures\Json\AttachmentJsonFixtures', $method)));
+
+            $tests[$method] = array(
+                call_user_func(array('Xabbuh\XApi\DataFixtures\AttachmentFixtures', $method)),
+                json_encode($jsonFixture->metadata),
+            );
+        }
+
+        return $tests;
     }
 
     /**
      * @dataProvider deserializeAttachmentData
      */
-    public function testDeserializeAttachment($json, Attachment $expectedAttachment)
+    public function testDeserializeAttachment($json, $content, Attachment $expectedAttachment)
     {
-        $attachment = $this->serializer->deserialize($json, 'Xabbuh\XApi\Model\Attachment', 'json');
+        $context = array();
+
+        if (null !== $content) {
+            $context['xapi_attachments'] = array(
+                hash('sha256', $content) => array(
+                    'content' => $content,
+                )
+            );
+        }
+
+        $attachment = $this->serializer->deserialize($json, 'Xabbuh\XApi\Model\Attachment', 'json', $context);
 
         $this->assertInstanceOf('Xabbuh\XApi\Model\Attachment', $attachment);
         $this->assertTrue($expectedAttachment->equals($attachment), 'Deserialized attachment has the expected properties');
@@ -150,7 +175,18 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
 
     public function deserializeAttachmentData()
     {
-        return $this->buildDeserializeTestCases('Attachment');
+        $tests = array();
+
+        foreach (get_class_methods('XApi\Fixtures\Json\AttachmentJsonFixtures') as $method) {
+            $jsonFixture = json_decode(call_user_func(array('XApi\Fixtures\Json\AttachmentJsonFixtures', $method)));
+            $tests[$method] = array(
+                json_encode($jsonFixture->metadata),
+                isset($jsonFixture->content) ? $jsonFixture->content : null,
+                call_user_func(array('Xabbuh\XApi\DataFixtures\AttachmentFixtures', $method)),
+            );
+        }
+
+        return $tests;
     }
 
     /**
