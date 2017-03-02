@@ -52,7 +52,7 @@ final class ExtensionsNormalizer implements DenormalizerInterface, NormalizerInt
      */
     public function supportsNormalization($data, $format = null)
     {
-       return $data instanceof Extensions;
+        return $data instanceof Extensions;
     }
 
     /**

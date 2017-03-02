@@ -11,8 +11,11 @@
 
 namespace Xabbuh\XApi\Serializer\Symfony;
 
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Xabbuh\XApi\Model\StatementResult;
+use Xabbuh\XApi\Serializer\Exception\StatementResultDeserializationException;
+use Xabbuh\XApi\Serializer\Exception\StatementResultSerializationException;
 use Xabbuh\XApi\Serializer\StatementResultSerializerInterface;
 
 /**
@@ -33,25 +36,33 @@ final class StatementResultSerializer implements StatementResultSerializerInterf
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function serializeStatementResult(StatementResult $statementResult)
     {
-        return $this->serializer->serialize($statementResult, 'json');
+        try {
+            return $this->serializer->serialize($statementResult, 'json');
+        } catch (ExceptionInterface $e) {
+            throw new StatementResultSerializationException($e->getMessage(), 0, $e);
+        }
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function deserializeStatementResult($data, array $attachments = array())
     {
-        return $this->serializer->deserialize(
-            $data,
-            'Xabbuh\XApi\Model\StatementResult',
-            'json',
-            array(
-                'xapi_attachments' => $attachments,
-            )
-        );
+        try {
+            return $this->serializer->deserialize(
+                $data,
+                'Xabbuh\XApi\Model\StatementResult',
+                'json',
+                array(
+                    'xapi_attachments' => $attachments,
+                )
+            );
+        } catch (ExceptionInterface $e) {
+            throw new StatementResultDeserializationException($e->getMessage(), 0, $e);
+        }
     }
 }

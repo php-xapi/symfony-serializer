@@ -11,9 +11,12 @@
 
 namespace Xabbuh\XApi\Serializer\Symfony;
 
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Xabbuh\XApi\Model\Actor;
 use Xabbuh\XApi\Serializer\ActorSerializerInterface;
+use Xabbuh\XApi\Serializer\Exception\ActorDeserializationException;
+use Xabbuh\XApi\Serializer\Exception\ActorSerializationException;
 
 /**
  * Serializes and deserializes {@link Actor actors} using the Symfony Serializer component.
@@ -33,18 +36,26 @@ final class ActorSerializer implements ActorSerializerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function serializeActor(Actor $actor)
     {
-        return $this->serializer->serialize($actor, 'json');
+        try {
+            return $this->serializer->serialize($actor, 'json');
+        } catch (ExceptionInterface $e) {
+            throw new ActorSerializationException($e->getMessage(), 0, $e);
+        }
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function deserializeActor($data)
     {
-        return $this->serializer->deserialize($data, 'Xabbuh\XApi\Model\Actor', 'json');
+        try {
+            return $this->serializer->deserialize($data, 'Xabbuh\XApi\Model\Actor', 'json');
+        } catch (ExceptionInterface $e) {
+            throw new ActorDeserializationException($e->getMessage(), 0, $e);
+        }
     }
 }

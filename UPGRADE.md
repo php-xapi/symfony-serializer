@@ -1,6 +1,14 @@
 UPGRADE
 =======
 
+Upgrading from 2.x to 3.0
+-------------------------
+
+Dropped support for the `2.x` releases of the `php-xapi/serializer` package.
+
+This version also implements the support of the exceptions added in the `3.0` release
+of the `php-xapi/serializer` package.
+
 Upgrading from 1.x to 2.0
 -------------------------
 

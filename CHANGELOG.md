@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.0.0
+-----
+
+* Drop support for `2.x` releases of the `php-xapi/serializer` package.
+* Throws exceptions defined in `3.0` release of the `php-xapi/serializer` package.
+
 2.1.0
 -----
 

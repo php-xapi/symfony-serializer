@@ -11,9 +11,12 @@
 
 namespace Xabbuh\XApi\Serializer\Symfony;
 
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Xabbuh\XApi\Model\DocumentData;
 use Xabbuh\XApi\Serializer\DocumentDataSerializerInterface;
+use Xabbuh\XApi\Serializer\Exception\DocumentDataDeserializationException;
+use Xabbuh\XApi\Serializer\Exception\DocumentDataSerializationException;
 
 /**
  * Serializes and deserializes {@link Document documents} using the Symfony Serializer component.
@@ -33,18 +36,26 @@ final class DocumentDataSerializer implements DocumentDataSerializerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function serializeDocumentData(DocumentData $data)
     {
-        return $this->serializer->serialize($data, 'json');
+        try {
+            return $this->serializer->serialize($data, 'json');
+        } catch (ExceptionInterface $e) {
+            throw new DocumentDataSerializationException($e->getMessage(), 0, $e);
+        }
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function deserializeDocumentData($data)
     {
-        return $this->serializer->deserialize($data, 'Xabbuh\XApi\Model\DocumentData', 'json');
+        try {
+            return $this->serializer->deserialize($data, 'Xabbuh\XApi\Model\DocumentData', 'json');
+        } catch (ExceptionInterface $e) {
+            throw new DocumentDataDeserializationException($e->getMessage(), 0, $e);
+        }
     }
 }
