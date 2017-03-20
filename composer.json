@@ -11,10 +11,16 @@
             "homepage": "https://github.com/xabbuh"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Lctrs/serializer"
+        }
+    ],
     "require": {
         "php": "^5.6 || ^7.0",
         "php-xapi/model": "^1.0 || ^2.0",
-        "php-xapi/serializer": "^2.1.1",
+        "php-xapi/serializer": "dev-feature/activity-serializer as 3.0.0-dev",
         "symfony/serializer": "~2.8|~3.0"
     },
     "require-dev": {

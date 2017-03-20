@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.0.0
+-----
+
+* Add `ActivitySerializer` that implements `ActivitySerializerInterface`.
+
 2.1.0
 -----
 

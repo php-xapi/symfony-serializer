@@ -59,4 +59,12 @@ final class SerializerFactory implements SerializerFactoryInterface
     {
         return new DocumentDataSerializer($this->serializer);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createActivitySerializer()
+    {
+        return new ActivitySerializer($this->serializer);
+    }
 }

@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Serializer as SymfonySerializer;
 use Xabbuh\XApi\Serializer\Symfony\Normalizer\AccountNormalizer;
+use Xabbuh\XApi\Serializer\Symfony\Normalizer\ActivityNormalizer;
 use Xabbuh\XApi\Serializer\Symfony\Normalizer\ActorNormalizer;
 use Xabbuh\XApi\Serializer\Symfony\Normalizer\AttachmentNormalizer;
 use Xabbuh\XApi\Serializer\Symfony\Normalizer\ContextActivitiesNormalizer;
@@ -51,6 +52,7 @@ class Serializer
     {
         $normalizers = array(
             new AccountNormalizer(),
+            new ActivityNormalizer(),
             new ActorNormalizer(),
             new AttachmentNormalizer(),
             new ContextNormalizer(),
