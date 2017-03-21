@@ -28,6 +28,7 @@ install:
   - if [ "$deps" = "low" ]; then composer update --prefer-lowest --prefer-stable; else composer install; fi
 
 script:
+  - phpunit --version
   - vendor/bin/phpspec run
   - if [[ "$xdebug" = "yes" ]]; then phpunit --coverage-clover=coverage.clover; else phpunit; fi
   - if [[ "$xdebug" = "yes" ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
