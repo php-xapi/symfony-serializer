@@ -11,7 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Symfony\Tests;
 
-use Symfony\Component\Serializer\SerializerInterface;
+use PHPUnit\Framework\TestCase;
 use Xabbuh\XApi\Model\Account;
 use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\Actor;
@@ -28,7 +28,7 @@ use Xabbuh\XApi\Model\SubStatement;
 use Xabbuh\XApi\Model\Verb;
 use Xabbuh\XApi\Serializer\Symfony\Serializer;
 
-class SerializerTest extends \PHPUnit_Framework_TestCase
+class SerializerTest extends TestCase
 {
     private $serializer;
 
