@@ -22,7 +22,7 @@ use Xabbuh\XApi\Serializer\Exception\SerializationException;
  *
  * @author Jérôme Parmentier <jerome.parmentier@acensi.fr>
  */
-class ActivitySerializer implements ActivitySerializerInterface
+final class ActivitySerializer implements ActivitySerializerInterface
 {
     private $serializer;
 
@@ -37,7 +37,7 @@ class ActivitySerializer implements ActivitySerializerInterface
     public function serializeActivity(Activity $activity)
     {
         try {
-            $this->serializer->serialize($activity, 'json');
+            return $this->serializer->serialize($activity, 'json');
         } catch (SerializationException $e) {
             throw new ActivitySerializationException($e->getMessage(), 0, $e);
         }
