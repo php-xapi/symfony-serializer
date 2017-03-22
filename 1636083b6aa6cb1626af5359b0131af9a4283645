@@ -1,0 +1,17 @@
+---------------------------------------------------------------------------
+
+by Lctrs at 2017-03-21T17:07:04Z
+
+@xabbuh a new minor version of php-xapi/serializer with the PHPUnit 6 support should be released to make it pass.
+
+---------------------------------------------------------------------------
+
+by xabbuh at 2017-03-21T17:13:41Z
+
+Can you update the `composer.json` file like in https://github.com/php-xapi/symfony-serializer/pull/6/files#diff-b5d0ee8c97c7abd7e3fa29b9a27d1780R17?
+
+---------------------------------------------------------------------------
+
+by Lctrs at 2017-03-21T17:23:30Z
+
+@xabbuh It's green !
