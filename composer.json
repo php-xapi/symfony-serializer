@@ -11,16 +11,10 @@
             "homepage": "https://github.com/xabbuh"
         }
     ],
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "https://github.com/djoudi/model.git"
-      }
-     
-    ],
+
     "require": {
         "php": ">=5.3.0",
-        "djoudi/model": "^1.0 || ^2.0",
+        "php-xapi/model": "^1.0 || ^2.0",
         "php-xapi/serializer": "^2.1.1",
         "symfony/serializer": "~2.8|~3.0"
     },
