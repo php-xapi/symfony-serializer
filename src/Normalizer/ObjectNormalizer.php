@@ -13,7 +13,7 @@ namespace Xabbuh\XApi\Serializer\Symfony\Normalizer;
 
 use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\IRI;
-use Xabbuh\XApi\Model\Object;
+use Xabbuh\XApi\Model\BaseObject;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementId;
 use Xabbuh\XApi\Model\StatementReference;
