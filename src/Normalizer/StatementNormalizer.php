@@ -83,7 +83,7 @@ final class StatementNormalizer extends Normalizer
         $id = isset($data['id']) ? StatementId::fromString($data['id']) : null;
         $actor = $this->denormalizeData($data['actor'], 'Xabbuh\XApi\Model\Actor', $format, $context);
         $verb = $this->denormalizeData($data['verb'], 'Xabbuh\XApi\Model\Verb', $format, $context);
-        $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\Object', $format, $context);
+        $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\StatementObject', $format, $context);
         $result = null;
         $authority = null;
         $created = null;
