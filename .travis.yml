@@ -21,9 +21,7 @@ matrix:
       dist: precise
       env: deps="low"
     - php: 7.0
-      env: xdebug="yes"
       php: 7.1
-      env: xdebug="yes"
       php: 7.2
       env: xdebug="yes"
 
