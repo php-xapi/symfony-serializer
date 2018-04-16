@@ -78,7 +78,7 @@ final class ObjectNormalizer extends Normalizer
      */
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof StatementObject;
+        return $data instanceof Object || $data instanceof StatementObject;
     }
 
     /**
@@ -110,7 +110,7 @@ final class ObjectNormalizer extends Normalizer
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Xabbuh\XApi\Model\Activity' === $type || 'Xabbuh\XApi\Model\StatementObject' === $type || 'Xabbuh\XApi\Model\StatementReference' === $type || 'Xabbuh\XApi\Model\SubStatement' === $type;
+        return 'Xabbuh\XApi\Model\Activity' === $type || 'Xabbuh\XApi\Model\StatementObject' === $type || 'Xabbuh\XApi\Model\Object' === $type || 'Xabbuh\XApi\Model\StatementReference' === $type || 'Xabbuh\XApi\Model\SubStatement' === $type;
     }
 
     private function denormalizeActivity(array $data, $format = null, array $context = array())
