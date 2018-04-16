@@ -128,7 +128,8 @@ final class ObjectNormalizer extends Normalizer
     {
         $actor = $this->denormalizeData($data['actor'], 'Xabbuh\XApi\Model\Actor', $format, $context);
         $verb = $this->denormalizeData($data['verb'], 'Xabbuh\XApi\Model\Verb', $format, $context);
-        $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\StatementObject', $format, $context);
+        if (class_exists('Xabbuh\XApi\Model\Object')) {
+        $object = (class_exists('Xabbuh\XApi\Model\Object'))?$this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\Object', $format, $context):$this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\StatementObject', $format, $context);
         $result = null;
         $statementContext = null;
 
