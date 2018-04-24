@@ -10,6 +10,8 @@ CHANGELOG
 
 * allow `2.x` releases of the `php-xapi/model` package too
 
+* allow `3.x` releases of the `php-xapi/model` package too
+
 2.0.0
 -----
 
