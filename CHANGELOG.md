@@ -4,6 +4,8 @@ CHANGELOG
 2.1.0
 -----
 
+* added missing support for statement versions
+
 * dropped support for PHP < 5.6
 
 * allow `2.x` releases of the `php-xapi/model` package too
