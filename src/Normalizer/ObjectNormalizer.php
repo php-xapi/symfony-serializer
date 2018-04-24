@@ -13,7 +13,7 @@ namespace Xabbuh\XApi\Serializer\Symfony\Normalizer;
 
 use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\IRI;
-use Xabbuh\XApi\Model\Object;
+use Xabbuh\XApi\Model\StatementObject;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementId;
 use Xabbuh\XApi\Model\StatementReference;
@@ -78,7 +78,7 @@ final class ObjectNormalizer extends Normalizer
      */
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof Object;
+        return $data instanceof Object || $data instanceof StatementObject;
     }
 
     /**
@@ -110,7 +110,7 @@ final class ObjectNormalizer extends Normalizer
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'Xabbuh\XApi\Model\Activity' === $type || 'Xabbuh\XApi\Model\Object' === $type || 'Xabbuh\XApi\Model\StatementReference' === $type || 'Xabbuh\XApi\Model\SubStatement' === $type;
+        return 'Xabbuh\XApi\Model\Activity' === $type || 'Xabbuh\XApi\Model\StatementObject' === $type || 'Xabbuh\XApi\Model\Object' === $type || 'Xabbuh\XApi\Model\StatementReference' === $type || 'Xabbuh\XApi\Model\SubStatement' === $type;
     }
 
     private function denormalizeActivity(array $data, $format = null, array $context = array())
@@ -128,7 +128,11 @@ final class ObjectNormalizer extends Normalizer
     {
         $actor = $this->denormalizeData($data['actor'], 'Xabbuh\XApi\Model\Actor', $format, $context);
         $verb = $this->denormalizeData($data['verb'], 'Xabbuh\XApi\Model\Verb', $format, $context);
-        $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\Object', $format, $context);
+        if (class_exists('Xabbuh\XApi\Model\StatementObject')) {
+    $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\StatementObject', $format, $context);
+} else {
+    $object = $this->denormalizeData($data['object'], 'Xabbuh\XApi\Model\Object', $format, $context);
+}
         $result = null;
         $statementContext = null;
 
