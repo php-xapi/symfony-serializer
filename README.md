@@ -1,5 +1,5 @@
-Symfony Console Based Serializer for the xApi
-=============================================
+Symfony Based Serializer for the xApi
+=====================================
 
 [![Build Status](https://travis-ci.org/php-xapi/symfony-serializer.svg?branch=master)](https://travis-ci.org/php-xapi/symfony-serializer)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-xapi/symfony-serializer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/php-xapi/symfony-serializer/?branch=master)
