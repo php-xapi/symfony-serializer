@@ -16,7 +16,7 @@
         "php-xapi/exception": "^0.2.0",
         "php-xapi/model": "^1.2 || ^2.1 || ^3.0",
         "php-xapi/serializer": "^2.1.1",
-        "symfony/serializer": "~2.8|~3.0"
+        "symfony/serializer": "^2.8 || ^3.4 || ^4.0"
     },
     "require-dev": {
         "php-xapi/json-test-fixtures": "^2.0",
