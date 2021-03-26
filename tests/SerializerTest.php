@@ -32,7 +32,7 @@ class SerializerTest extends TestCase
 {
     private $serializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->serializer = Serializer::createSerializer();
     }

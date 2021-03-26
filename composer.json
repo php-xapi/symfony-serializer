@@ -21,7 +21,8 @@
     "require-dev": {
         "php-xapi/json-test-fixtures": "^2.0",
         "php-xapi/test-fixtures": "^1.0",
-        "phpspec/phpspec": "~2.3"
+        "phpspec/phpspec": "~2.3",
+        "symfony/phpunit-bridge": "^5.2"
     },
     "minimum-stability": "dev",
     "provide": {
