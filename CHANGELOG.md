@@ -4,9 +4,10 @@ CHANGELOG
 2.2.0
 -----
 
+* add support for PHP 8
 * added support for Symfony 5
 * dropped support for unmaintained Symfony versions
-* dropped support for PHP < 7.1
+* dropped support for PHP < 7.2
 
 2.1.0
 -----
